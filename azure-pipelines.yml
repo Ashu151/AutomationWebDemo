@@ -1,8 +1,3 @@
-# Maven
-# Build your Java project and run tests with Apache Maven.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/tasks/tool/java-tool-installer
-
 trigger:
 - main
 
@@ -10,21 +5,21 @@ pool:
   name: 'Default'
 
 steps:
-# Step 1: Install JDK 11 automatically from the Azure DevOps tool cache
+# Step 1: Install JDK 1.8 automatically from the Azure DevOps tool cache
 - task: JavaToolInstaller@0
   inputs:
-    versionSpec: '11'  # Version of JDK to install
+    versionSpec: '1.8'  # Version of JDK to install
     jdkArchitectureOption: 'x64'  # Architecture type (x64)
     jdkSourceOption: 'toolCache'  # Install from the Azure DevOps tool cache
     installationDirectory: $(Agent.ToolsDirectory)/jdk  # Installation directory
 
-# Step 2: Build with Maven using the installed JDK
+# Step 2: Build with Maven using the installed JDK 1.8
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
     mavenOptions: '-Xmx3072m'
     javaHomeOption: 'Path'  # Use the installed JDK from the tool installer
-    jdkVersionOption: '1.11'  # Specify the version of JDK to use (for clarity)
+    jdkVersionOption: '1.8'  # Specify the version of JDK to use (set to 1.8 for compatibility)
     jdkArchitectureOption: 'x64'  # Specify the architecture type (x64)
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
