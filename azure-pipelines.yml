@@ -16,7 +16,7 @@ steps:
     mavenPomFile: 'pom.xml'
     mavenOptions: '-Xmx3072m'
     javaHomeOption: 'Path'  # Automatically use the JAVA_HOME from the environment
-    jdkVersionOption: '1.11'  # Explicitly specify JDK 11 (optional, since JAVA_HOME is already set)
+    jdkVersionOption: '1.21'  # Explicitly specify JDK 11 (optional, since JAVA_HOME is already set)
     jdkArchitectureOption: 'x64'  # Ensure x64 architecture is used
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
