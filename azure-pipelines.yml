@@ -5,12 +5,12 @@ pool:
   name: 'Default'
 
 steps:
-# Step 1: Install JDK 1.8 automatically from the Azure DevOps tool cache
+# Step 1: Use Pre-installed JDK 1.8 on Microsoft-hosted agents
 - task: JavaToolInstaller@0
   inputs:
     versionSpec: '1.8'  # Version of JDK to install
     jdkArchitectureOption: 'x64'  # Architecture type (x64)
-    jdkSourceOption: 'toolCache'  # Install from the Azure DevOps tool cache
+    jdkSourceOption: 'PreInstalled'  # Use pre-installed JDK on the agent
     installationDirectory: $(Agent.ToolsDirectory)/jdk  # Installation directory
 
 # Step 2: Build with Maven using the installed JDK 1.8
