@@ -1,7 +1,7 @@
 # Maven
 # Build your Java project and run tests with Apache Maven.
 # Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+# https://docs.microsoft.com/azure/devops/pipelines/tasks/tool/java-tool-installer
 
 trigger:
 - main
@@ -15,6 +15,7 @@ steps:
   inputs:
     versionSpec: '11'  # Version of JDK to install
     jdkArchitectureOption: 'x64'  # Architecture type (x64)
+    jdkSourceOption: 'toolCache'  # Source from the tool cache
     installationDirectory: $(Agent.ToolsDirectory)/jdk  # Installation directory
 
 # Step 2: Build with Maven using the installed JDK
