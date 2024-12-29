@@ -10,12 +10,20 @@ pool:
   name: 'Default'
 
 steps:
+# Step 1: Install JDK 11 automatically
+- task: JavaToolInstaller@0
+  inputs:
+    versionSpec: '11'  # Version of JDK to install
+    jdkArchitecture: 'x64'  # Architecture type (x64)
+    installationDirectory: $(Agent.ToolsDirectory)/jdk  # Installation directory
+
+# Step 2: Build with Maven using the installed JDK
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
     mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.11'
+    javaHomeOption: 'Path'  # Use the installed JDK from the tool installer
+    jdkVersionOption: '1.11'  # Specify the version of JDK to use (for clarity)
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
