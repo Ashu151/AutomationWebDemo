@@ -14,7 +14,7 @@ steps:
 - task: JavaToolInstaller@0
   inputs:
     versionSpec: '11'  # Version of JDK to install
-    jdkArchitecture: 'x64'  # Architecture type (x64)
+    jdkArchitectureOption: 'x64'  # Architecture type (x64)
     installationDirectory: $(Agent.ToolsDirectory)/jdk  # Installation directory
 
 # Step 2: Build with Maven using the installed JDK
@@ -24,7 +24,7 @@ steps:
     mavenOptions: '-Xmx3072m'
     javaHomeOption: 'Path'  # Use the installed JDK from the tool installer
     jdkVersionOption: '1.11'  # Specify the version of JDK to use (for clarity)
-    jdkArchitectureOption: 'x64'
+    jdkArchitectureOption: 'x64'  # Specify the architecture type (x64)
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
